@@ -13,7 +13,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApplication3", "Cons
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsFormsApplication2", "WindowsFormsApplication2\WindowsFormsApplication2.csproj", "{A5C0D8EE-03BF-4228-A178-A80DC9209A57}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsFormsApplication3", "WindowsFormsApplication3\WindowsFormsApplication3.csproj", "{E124D126-1C45-48E2-8702-9ABCB934B2C6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoFishGame", "WindowsFormsApplication3\GoFishGame.csproj", "{E124D126-1C45-48E2-8702-9ABCB934B2C6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
