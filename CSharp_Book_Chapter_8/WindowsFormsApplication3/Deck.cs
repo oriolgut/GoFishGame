@@ -8,30 +8,30 @@ namespace WindowsFormsApplication3
 {
     class Deck
     {
-        private List<Card> cards;
-        private Random random = new Random();
-        public int Count { get { return cards.Count; } }
+        private List<Card> _cards;
+        private Random _random = new Random();
+        public int Count { get { return _cards.Count; } }
 
         public Deck()
         {
-            cards = new List<Card>();
+            _cards = new List<Card>();
             for (int suit = 0; suit <= 3; suit++)
                 for (int value = 1; value <= 13; value++)
-                    cards.Add(new Card((Values)value, (Suits)suit));
+                    _cards.Add(new Card((Values)value, (Suits)suit));
         }
         public Card Peek(int cardNumber)
         {
-        return cards[cardNumber];
+        return _cards[cardNumber];
         }
 
         public Deck(IEnumerable<Card> initialCards)
         {
-            cards = new List<Card>(initialCards);
+            _cards = new List<Card>(initialCards);
         }
 
         public void Add(Card cardToAdd)
         {
-            cards.Add(cardToAdd);
+            _cards.Add(cardToAdd);
         }
 
         public Card Deal()
@@ -41,53 +41,53 @@ namespace WindowsFormsApplication3
 
         public Card Deal(int index)
         {
-            Card cardToDeal = cards[index];
-            cards.RemoveAt(index);
+            Card cardToDeal = _cards[index];
+            _cards.RemoveAt(index);
             return cardToDeal;
         }
 
         public void Shuffle()
         {
             List<Card> newCards = new List<Card>();
-            while (cards.Count > 0)
+            while (_cards.Count > 0)
             {
-                int cardToMove = random.Next(cards.Count);
-                newCards.Add(cards[cardToMove]);
-                cards.RemoveAt(cardToMove);
+                int cardToMove = _random.Next(_cards.Count);
+                newCards.Add(_cards[cardToMove]);
+                _cards.RemoveAt(cardToMove);
             }
-            cards = newCards;
+            _cards = newCards;
         }
 
         public Deck PullOutValues(Values value)
         {
             Deck decktoReturn = new Deck(new Card[] { });
-            for (int i = cards.Count - 1; i >= 0; i--)
-                if (cards[i].Value == value)
+            for (int i = _cards.Count - 1; i >= 0; i--)
+                if (_cards[i].Value == value)
                     decktoReturn.Add(Deal(i));
             return decktoReturn;
         }
 
         public IEnumerable<string> GetCardNames()
         {
-            string[] cardNames = new string[cards.Count];
-            for (int i = 0; i < cards.Count; i++)
-                cardNames[i] = cards[i].Name;
+            string[] cardNames = new string[_cards.Count];
+            for (int i = 0; i < _cards.Count; i++)
+                cardNames[i] = _cards[i].Name;
             return cardNames;
         }
 
         public void SortBySuit()
         {
-            cards.Sort(new CardComparer_bySuit());
+            _cards.Sort(new CardComparer_bySuit());
         }
 
         public void SortByValue()
         {
-            cards.Sort(new CardComparer_byValue());
+            _cards.Sort(new CardComparer_byValue());
         }
 
         public bool ContainsValue (Values value)
         {
-            foreach (Card card in cards)
+            foreach (Card card in _cards)
                 if (card.Value == value)
                     return true;
             return false;
@@ -96,7 +96,7 @@ namespace WindowsFormsApplication3
         public bool HasBook(Values value)
         {
             int numberofCards = 0;
-            foreach (Card card in cards)
+            foreach (Card card in _cards)
                 if (card.Value == value)
                     numberofCards++;
             if (numberofCards == 4)

@@ -54,7 +54,7 @@ namespace WindowsFormsApplication3
         public Deck DoYouHaveAny(Values value)
         {
             Deck cardsIHave = _cards.PullOutValues(value);
-            _textBoxOnForm.Text += Name + " has " + cardsIHave.Count + Card.Plural(value) + Environment.NewLine;
+            _textBoxOnForm.Text += Name + " has " + cardsIHave.Count + " " + Card.Plural(value) + Environment.NewLine;
             return cardsIHave;
         }
 
@@ -89,7 +89,7 @@ namespace WindowsFormsApplication3
             if (totalCardsGiven == 0 && stock.Count > 0)
             {
                 _textBoxOnForm.Text += Name +
-              " must draw from the stock." + Environment.NewLine;
+                " must draw from the stock." + Environment.NewLine;
                 _cards.Add(stock.Deal());
             }
         }
